@@ -1,6 +1,6 @@
 # Jarkom_Modul5_Lapres_A04
 
-**(A)** Tugas pertama kalian yaitu membuat topologi jaringan sesuai dengan rancangan yang diberikan Bibah seperti dibawah ini :
+**(A).** Tugas pertama kalian yaitu membuat topologi jaringan sesuai dengan rancangan yang diberikan Bibah seperti dibawah ini :
 
 ![topo](img/topo.png)
 
@@ -8,15 +8,15 @@ topologi.sh
 
 ![topologi](img/topologi.png)
 
-**(B)** Karena kalian telah mempelajari Subnetting dan Routing, Bibah meminta kalian untuk membuat topologi tersebut menggunakan teknik ​CIDR atau ​VLSM​.
+**(B).** Karena kalian telah mempelajari Subnetting dan Routing, Bibah meminta kalian untuk membuat topologi tersebut menggunakan teknik ​CIDR atau ​VLSM​.
 
-**(C)** Kalian juga diharuskan melakukan routing agar setiap perangkat pada jaringan tersebut dapat terhubung.
+**(C).** Kalian juga diharuskan melakukan routing agar setiap perangkat pada jaringan tersebut dapat terhubung.
 
 ![C_1](img/C_1.png)
 ![C_2](img/C_2.png)
 ![C_bukti](img/C_bukti.png)
 
-**(D)** Tugas berikutnya adalah memberikan ip pada subnet ​SIDOARJO dan ​GRESIK secara dinamis menggunakan bantuan DHCP SERVER (Selain subnet tersebut menggunakan ip static). Kemudian kalian mengingat bahwa kalian harus setting DHCP RELAY pada router yang menghubungkannya, seperti yang kalian telah pelajari di masa lalu.
+**(D).** Tugas berikutnya adalah memberikan ip pada subnet ​SIDOARJO dan ​GRESIK secara dinamis menggunakan bantuan DHCP SERVER (Selain subnet tersebut menggunakan ip static). Kemudian kalian mengingat bahwa kalian harus setting DHCP RELAY pada router yang menghubungkannya, seperti yang kalian telah pelajari di masa lalu.
 
 Konfigurasi DHCP Server
 
@@ -27,7 +27,7 @@ Konfigurasi DHCP Relay
     ![D_relay_1](img/D_relay_1.png)
     ![D_relay_2](img/D_relay_2.png)
 
-**1** Agar topologi yang kalian buat dapat mengakses keluar, kalian diminta untuk mengkonfigurasi SURABAYA ​menggunakan iptables, namun Bibah tidak ingin kalian menggunakan MASQUERADE.
+**1.** Agar topologi yang kalian buat dapat mengakses keluar, kalian diminta untuk mengkonfigurasi SURABAYA ​menggunakan iptables, namun Bibah tidak ingin kalian menggunakan MASQUERADE.
 
 Konfigurasi Iptables
 ```
@@ -35,7 +35,7 @@ Konfigurasi Iptables
 ```
 ![1_bukti](img/1_bukti.png)
 
-**2** Kalian diminta untuk mendrop semua akses SSH dari luar Topologi (UML) Kalian pada server yang memiliki ip DMZ (DHCP dan DNS SERVER) pada ​SURABAYA​ demi menjaga keamanan.
+**2.** Kalian diminta untuk mendrop semua akses SSH dari luar Topologi (UML) Kalian pada server yang memiliki ip DMZ (DHCP dan DNS SERVER) pada ​SURABAYA​ demi menjaga keamanan.
 
 Konfigurasi iptables
 ```
@@ -48,7 +48,49 @@ Konfigurasi iptables
 ![2_bukti_1](img/2_bukti_1.png)
 ![2_bukti_2](img/2_bukti_2.png)
 
-**6** Bibah ingin ​SURABAYA disetting sehingga setiap request dari client yang mengakses ​DNS Server akan didistribusikan ​secara bergantian pada PROBOLINGGO​ port 80 dan ​MADIUN​ port 80.
+DROPPED
+![2_bukti_drop](img/2_bukti_drop.png)
+
+**3.** Karena tim kalian maksimal terdiri dari 3 orang, Bibah meminta kalian untuk membatasi DHCP dan DNS server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan yang berasal dari mana saja menggunakan ​iptables pada masing masing server​, selebihnya akan di DROP.
+
+Konfigurasi iptables
+```
+config
+```
+
+MOJOKERTO
+![3_bukti_mojo](img/3_bukti_mojo.png)
+![3_bukti_drop_mojo](img/3_bukti_drop_mojo.png)
+
+MALANG
+![3_bukti_malang](img/3_bukti_malang.png)
+
+
+Kemudian kalian diminta untuk membatasi akses ke MALANG yang berasal dari SUBNET SIDOARJO dan SUBNET GRESIK dengan peraturan sebagai berikut:
+**4.** Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada hari Senin sampai Jumat.
+
+Konfigurasi iptables : 
+```
+```
+ACCEPTED
+![4_bukti_1](img/4_bukti_1.png)
+
+REJECTED
+![4_bukti_2](img/4_bukti_2.png)
+
+**5.** Akses dari subnet GRESIK hanya diperbolehkan pada pukul 17.00 hingga pukul 07.00 setiap harinya.
+
+Konfigurasi iptables:
+```
+```
+
+ACCEPTED
+![5_bukti_1](img/5_bukti_1.png)
+
+REJECTED
+![5_bukti_2](img/5_bukti_2.png)
+
+**6.** Bibah ingin ​SURABAYA disetting sehingga setiap request dari client yang mengakses ​DNS Server akan didistribusikan ​secara bergantian pada PROBOLINGGO​ port 80 dan ​MADIUN​ port 80.
 
 Konfigurasi iptables
 ```
