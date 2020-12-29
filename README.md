@@ -4,6 +4,10 @@
 
 ![topo](img/topo.png)
 
+topologi.sh
+
+![topologi](img/topologi.png)
+
 **(B)** Karena kalian telah mempelajari Subnetting dan Routing, Bibah meminta kalian untuk membuat topologi tersebut menggunakan teknik ​CIDR atau ​VLSM​.
 
 **(C)** Kalian juga diharuskan melakukan routing agar setiap perangkat pada jaringan tersebut dapat terhubung.
