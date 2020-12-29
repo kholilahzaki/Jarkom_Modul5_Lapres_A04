@@ -10,6 +10,14 @@ topologi.sh
 
 **(B).** Karena kalian telah mempelajari Subnetting dan Routing, Bibah meminta kalian untuk membuat topologi tersebut menggunakan teknik ​CIDR atau ​VLSM​.
 
+![cidr 1](https://user-images.githubusercontent.com/61299072/103285451-c3369b00-4a10-11eb-8f3f-63ecd37820b7.PNG)
+![cidr 2](https://user-images.githubusercontent.com/61299072/103285454-c5005e80-4a10-11eb-952c-9ecf546d5bcf.PNG)
+![cidr 3](https://user-images.githubusercontent.com/61299072/103285457-c893e580-4a10-11eb-9aa0-2f834598cefd.PNG)
+
+Berikut adalah tree untuk pembagian IP nya
+
+![tree-Modul 5 bener](https://user-images.githubusercontent.com/61299072/103285503-e5c8b400-4a10-11eb-909f-f6c7375de8b3.jpg)
+
 **(C).** Kalian juga diharuskan melakukan routing agar setiap perangkat pada jaringan tersebut dapat terhubung.
 
 ![C_1](img/C_1.png)
