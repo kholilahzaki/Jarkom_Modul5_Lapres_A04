@@ -55,7 +55,11 @@ DROPPED
 
 Konfigurasi iptables
 ```
-config
+iptables -N LOGGING
+iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j LOGGING
+iptables -A LOGGING -m limit  --limit 2/min -j LOG --log-prefix "DROP: " --log-level info
+iptables -A LOGGING -j DROP
+
 ```
 
 MOJOKERTO
@@ -71,6 +75,8 @@ Kemudian kalian diminta untuk membatasi akses ke MALANG yang berasal dari SUBNET
 
 Konfigurasi iptables : 
 ```
+iptables -A INPUT -s 192.168.4.0/24 -m time --timestart 07:00 --timestop 17:00 --weekdays Mon,Tue,Wed,Thu,Fri -j ACCEPT
+
 ```
 ACCEPTED
 ![4_bukti_1](img/4_bukti_1.png)
@@ -82,6 +88,10 @@ REJECTED
 
 Konfigurasi iptables:
 ```
+#No. 5
+iptables -A INPUT -s 192.168.0.0/24 -m time --timestart 17:00 --timestop 00:00 -j ACCEPT
+iptables -A INPUT -s 192.168.0.0/24 -m time --timestart 00:00 --timestop 08:00 -j ACCEPT
+iptables -A INPUT -j REJECT
 ```
 
 ACCEPTED
@@ -100,3 +110,7 @@ Konfigurasi iptables
     iptables -t nat -A POSTROUTING -p tcp -d 192.168.1.3 --dport 80 -j SNAT --to-source 10.151.73.42:80
 ```
 ![6_bukti](img/6_bukti.png)
+
+**7.** Bibah ingin agar semua paket didrop oleh firewall (dalam topologi) tercatat dalam log pada setiap UML yang memiliki aturan drop.
+
+Logging setiap dropped packets sudah ada di nomor-nomor yang memiliki command DROP.
